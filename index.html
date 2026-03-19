@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>НОВАЯ РЕАЛЬНОСТЬ — Академия женского успеха</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #C9A96E;
+  --gold-light: #E8D5A3;
+  --dark: #0A0A0A;
+  --dark2: #111111;
+  --dark3: #1A1A1A;
+  --white: #FFFFFF;
+  --gray: #888888;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--dark);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ---- NAV ---- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 20px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+  backdrop-filter: blur(10px);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 700; letter-spacing: 4px;
+  color: var(--gold);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 40px; }
+.nav-links a {
+  color: rgba(255,255,255,0.7); text-decoration: none;
+  font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0A0A0A 0%, #1a0a00 50%, #0A0A0A 100%);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 120px 40px 80px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.12) 0%, transparent 70%);
+}
+.hero-tag {
+  font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300; line-height: 1;
+  margin-bottom: 10px;
+}
+.hero h1 span { color: var(--gold); font-style: italic; }
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 300; color: rgba(255,255,255,0.6);
+  margin-bottom: 40px; letter-spacing: 2px;
+}
+.hero-desc {
+  max-width: 560px; font-size: 0.9rem; line-height: 1.8;
+  color: rgba(255,255,255,0.55); margin-bottom: 50px;
+}
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), #a07840);
+  color: var(--dark); text-decoration: none;
+  padding: 18px 50px; font-size: 0.75rem;
+  letter-spacing: 3px; text-transform: uppercase; font-weight: 700;
+  border: none; cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(201,169,110,0.4); }
+.btn-outline {
+  display: inline-block;
+  border: 1px solid var(--gold); color: var(--gold);
+  text-decoration: none; padding: 16px 40px;
+  font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+  transition: all 0.3s; cursor: pointer; background: transparent;
+}
+.btn-outline:hover { background: var(--gold); color: var(--dark); }
+
+.hero-stats {
+  display: flex; gap: 60px; margin-top: 80px;
+  padding-top: 40px; border-top: 1px solid rgba(201,169,110,0.2);
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 700; color: var(--gold);
+}
+.stat-label { font-size: 0.7rem; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; }
+
+/* ---- SECTION UTILS ---- */
+section { padding: 100px 60px; }
+.section-tag {
+  font-size: 0.65rem; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 4rem); font-weight: 300; line-height: 1.1;
+  margin-bottom: 20px;
+}
+.section-title em { color: var(--gold); font-style: italic; }
+.divider {
+  width: 60px; height: 1px; background: var(--gold);
+  margin: 30px 0;
+}
+
+/* ---- COACHES ---- */
+.coaches { background: var(--dark2); }
+.coaches-inner { max-width: 1200px; margin: 0 auto; }
+.coaches-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 60px; }
+
+.coach-card { position: relative; }
+.coach-photo-wrap {
+  position: relative; overflow: hidden;
+  aspect-ratio: 3/4; margin-bottom: 30px;
+}
+.coach-photo-wrap img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  filter: grayscale(20%) contrast(1.1);
+  transition: transform 0.6s;
+}
+.coach-card:hover .coach-photo-wrap img { transform: scale(1.04); }
+.coach-photo-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 50%);
+}
+.coach-badge {
+  position: absolute; bottom: 24px; left: 24px; z-index: 2;
+}
+.coach-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 600; color: white;
+}
+.coach-role { font-size: 0.65rem; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.coach-bio { font-size: 0.85rem; line-height: 1.9; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+.coach-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.coach-tag {
+  font-size: 0.65rem; letter-spacing: 1px; padding: 6px 14px;
+  border: 1px solid rgba(201,169,110,0.3); color: var(--gold-light);
+}
+
+/* ---- PROMISE ---- */
+.promise { background: var(--dark3); text-align: center; }
+.promise-inner { max-width: 900px; margin: 0 auto; }
+.promise-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+  font-weight: 300; line-height: 1.4;
+  color: rgba(255,255,255,0.9); margin: 40px 0;
+  padding: 40px; border-left: 3px solid var(--gold);
+  text-align: left;
+}
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 70px; }
+.pillar-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; color: rgba(201,169,110,0.3); font-weight: 700; margin-bottom: 12px;
+}
+.pillar-title { font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; color: var(--gold); }
+.pillar-text { font-size: 0.8rem; line-height: 1.8; color: var(--gray); }
+
+/* ---- RESULTS ---- */
+.results { background: var(--dark2); }
+.results-inner { max-width: 1200px; margin: 0 auto; }
+.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+.result-card {
+  background: var(--dark3); padding: 40px;
+  border-top: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+.result-card:hover { border-color: var(--gold); }
+.result-card blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; line-height: 1.7;
+  color: rgba(255,255,255,0.8); margin-bottom: 24px; font-style: italic;
+}
+.result-author { display: flex; align-items: center; gap: 14px; }
+.result-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  object-fit: cover; object-position: top;
+  border: 2px solid var(--gold);
+}
+.result-name { font-size: 0.8rem; font-weight: 600; }
+.result-meta { font-size: 0.7rem; color: var(--gray); margin-top: 2px; }
+
+/* ---- PACKAGES ---- */
+.packages { background: var(--dark); text-align: center; }
+.packages-inner { max-width: 1200px; margin: 0 auto; }
+.packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+.pkg {
+  background: var(--dark3); padding: 50px 36px;
+  position: relative; transition: transform 0.3s;
+}
+.pkg:hover { transform: translateY(-6px); }
+.pkg.featured {
+  background: linear-gradient(135deg, #1a1200, #2a1e00);
+  border: 1px solid var(--gold);
+}
+.pkg-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: var(--dark);
+  font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
+  padding: 5px 16px; font-weight: 700; white-space: nowrap;
+}
+.pkg-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 600; margin-bottom: 8px;
+  color: var(--gold);
+}
+.pkg-tagline { font-size: 0.7rem; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; margin-bottom: 30px; }
+.pkg-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; font-weight: 700; color: white; margin-bottom: 6px;
+}
+.pkg-price sup { font-size: 1.5rem; vertical-align: top; margin-top: 12px; }
+.pkg-period { font-size: 0.7rem; color: var(--gray); margin-bottom: 36px; }
+.pkg-features { list-style: none; margin-bottom: 40px; text-align: left; }
+.pkg-features li {
+  font-size: 0.8rem; line-height: 1.6; color: rgba(255,255,255,0.7);
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex; gap: 10px;
+}
+.pkg-features li::before { content: '✦'; color: var(--gold); flex-shrink: 0; }
+
+/* ---- SERGEY ---- */
+.testimonial-hero {
+  background: linear-gradient(135deg, var(--dark3), var(--dark2));
+  padding: 100px 60px;
+}
+.testimonial-hero-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 400px 1fr; gap: 80px; align-items: center;
+}
+.testimonial-hero-photo {
+  position: relative;
+}
+.testimonial-hero-photo img {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top;
+  filter: grayscale(10%);
+}
+.testimonial-hero-photo::before {
+  content: '❝';
+  position: absolute; top: -30px; left: -20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8rem; color: var(--gold); opacity: 0.3; line-height: 1;
+}
+.th-tag { font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.th-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem); font-weight: 300;
+  line-height: 1.5; margin-bottom: 30px; color: rgba(255,255,255,0.9);
+}
+.th-name { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+.th-role { font-size: 0.7rem; letter-spacing: 2px; color: var(--gray); }
+.th-result {
+  margin-top: 40px; padding: 24px; border-left: 3px solid var(--gold);
+  background: rgba(201,169,110,0.05);
+}
+.th-result-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; color: var(--gold); font-weight: 700;
+}
+.th-result-text { font-size: 0.8rem; color: var(--gray); }
+
+/* ---- CTA ---- */
+.cta {
+  background: linear-gradient(135deg, #0f0800, #1a1000, #0f0800);
+  text-align: center; padding: 120px 60px;
+  position: relative; overflow: hidden;
+}
+.cta::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.15) 0%, transparent 60%);
+}
+.cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+.cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 4rem); font-weight: 300; margin-bottom: 20px;
+}
+.cta p { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 40px; }
+.cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.cta-note { font-size: 0.7rem; color: var(--gray); margin-top: 20px; letter-spacing: 1px; }
+
+/* ---- FOOTER ---- */
+footer {
+  background: #050505; padding: 50px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(201,169,110,0.1);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; color: var(--gold); letter-spacing: 3px;
+}
+.footer-text { font-size: 0.7rem; color: var(--gray); }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  section { padding: 70px 24px; }
+  .coaches-grid { grid-template-columns: 1fr; }
+  .pillars { grid-template-columns: 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .testimonial-hero-inner { grid-template-columns: 1fr; }
+  .hero-stats { gap: 30px; flex-wrap: wrap; justify-content: center; }
+  footer { flex-direction: column; gap: 20px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">NOVA REALITY</a>
+  <div class="nav-links">
+    <a href="#coaches">О нас</a>
+    <a href="#promise">Методология</a>
+    <a href="#packages">Программы</a>
+    <a href="#cta">Записаться</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Академия женского мышления и денег</div>
+  <h1>НОВАЯ<br><span>РЕАЛЬНОСТЬ</span></h1>
+  <div class="hero-sub">Создай жизнь, которую ты заслуживаешь</div>
+  <p class="hero-desc">Ты не рождена для средней жизни. Мы помогаем женщинам сломать невидимые ограничения — в деньгах, отношениях и восприятии себя. За 90 дней. Без воды и мотивационных постов.</p>
+  <a href="#packages" class="btn-primary">Выбрать программу</a>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">1 200+</div>
+      <div class="stat-label">Женщин изменили реальность</div>
+    </div>
+    <div>
+      <div class="stat-num">×4.7</div>
+      <div class="stat-label">Средний рост дохода</div>
+    </div>
+    <div>
+      <div class="stat-num">6 лет</div>
+      <div class="stat-label">Практического опыта</div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHES -->
+<section class="coaches" id="coaches">
+  <div class="coaches-inner">
+    <div class="section-tag">Ваши наставники</div>
+    <h2 class="section-title">Аня и Оля —<br><em>мы прошли этот путь сами</em></h2>
+    <div class="divider"></div>
+    <div class="coaches-grid">
+      <div class="coach-card">
+        <div class="coach-photo-wrap">
+          <img src="img/anya.jpg" alt="Аня">
+          <div class="coach-badge">
+            <div class="coach-name">Аня</div>
+            <div class="coach-role">Коуч по деньгам и мышлению</div>
+          </div>
+        </div>
+        <p class="coach-bio">7 лет назад я зарабатывала 40 000 рублей и думала, что это потолок. Сегодня мой оборот — 12 млн в год. Я не нашла секретный метод. Я изменила то, как думаю о деньгах, о себе и о том, что мне позволено иметь. Именно этому я учу.</p>
+        <div class="coach-tags">
+          <span class="coach-tag">Нейронные паттерны</span>
+          <span class="coach-tag">Денежное мышление</span>
+          <span class="coach-tag">Женский архетип</span>
+        </div>
+      </div>
+      <div class="coach-card">
+        <div class="coach-photo-wrap">
+          <img src="img/olya.jpg" alt="Оля">
+          <div class="coach-badge">
+            <div class="coach-name">Оля</div>
+            <div class="coach-role">Коуч по реальности и энергии</div>
+          </div>
+        </div>
+        <p class="coach-bio">Я занималась квантовой физикой и поняла: реальность буквально создаётся твоим восприятием. Не метафорически — на уровне нейробиологии. Я собрала инструменты из науки, психологии и практики и упаковала их в систему, которая работает.</p>
+        <div class="coach-tags">
+          <span class="coach-tag">Квантовое мышление</span>
+          <span class="coach-tag">Нейрокоучинг</span>
+          <span class="coach-tag">Управление энергией</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="promise" id="promise">
+  <div class="promise-inner">
+    <div class="section-tag">Наш подход</div>
+    <h2 class="section-title">Мы не продаём<br><em>мотивацию</em></h2>
+    <blockquote class="promise-quote">«Большинство коучей учат тебя хотеть больше. Мы учим тебя перестать блокировать то, что ты уже заслуживаешь. Это разные вещи.»</blockquote>
+    <div class="pillars">
+      <div>
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Диагностика ограничений</div>
+        <p class="pillar-text">Точно определяем, какие убеждения держат тебя на текущем уровне. Не гадаем — используем проверенные инструменты.</p>
+      </div>
+      <div>
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Перепрошивка реальности</div>
+        <p class="pillar-text">Меняем паттерны на уровне нервной системы. Результат закрепляется — не как привычка, а как новый способ быть.</p>
+      </div>
+      <div>
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Действие из силы</div>
+        <p class="pillar-text">Когда внутренний фундамент готов — внешние результаты приходят быстро. Без надрыва, без выгорания.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results" id="results">
+  <div class="results-inner">
+    <div class="section-tag">Результаты</div>
+    <h2 class="section-title">Они уже создали<br><em>новую реальность</em></h2>
+    <div class="divider"></div>
+    <div class="results-grid">
+      <div class="result-card">
+        <blockquote>«За 3 месяца я подняла чек на свои услуги в 4 раза. Самое удивительное — клиенты стали приходить сами. Я не изменила маркетинг. Я изменила себя.»</blockquote>
+        <div class="result-author">
+          <div>
+            <div class="result-name">Марина К.</div>
+            <div class="result-meta">Дизайнер интерьеров · Москва</div>
+          </div>
+        </div>
+      </div>
+      <div class="result-card">
+        <blockquote>«Я пришла с вопросом "как зарабатывать больше". Ушла с пониманием, кто я есть. Деньги — это было следствие. Сейчас мой оборот 800 000 в месяц.»</blockquote>
+        <div class="result-author">
+          <div>
+            <div class="result-name">Екатерина В.</div>
+            <div class="result-meta">Онлайн-предприниматель · Дубай</div>
+          </div>
+        </div>
+      </div>
+      <div class="result-card">
+        <blockquote>«Я была уверена, что проблема в нише, в конкурентах, в рынке. Аня показала мне, что проблема была в том, как я разрешала себе зарабатывать. Это изменило всё.»</blockquote>
+        <div class="result-author">
+          <div>
+            <div class="result-name">Алина Т.</div>
+            <div class="result-meta">Коуч · Алматы</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages" id="packages">
+  <div class="packages-inner">
+    <div class="section-tag">Программы</div>
+    <h2 class="section-title">Выбери свой<br><em>уровень трансформации</em></h2>
+    <div class="divider" style="margin: 30px auto;"></div>
+    <div class="packages-grid">
+
+      <div class="pkg">
+        <div class="pkg-name">Пробуждение</div>
+        <div class="pkg-tagline">Первый шаг к новой версии</div>
+        <div class="pkg-price"><sup>₽</sup>47 000</div>
+        <div class="pkg-period">разовый платёж · 4 недели</div>
+        <ul class="pkg-features">
+          <li>Диагностическая сессия 90 мин</li>
+          <li>4 групповых звонка с Аней и Олей</li>
+          <li>Доступ к базовым материалам</li>
+          <li>Чат поддержки с участниками</li>
+          <li>Персональный план действий</li>
+        </ul>
+        <a href="#cta" class="btn-outline" style="width:100%;text-align:center;display:block;">Начать</a>
+      </div>
+
+      <div class="pkg featured">
+        <div class="pkg-badge">Самый популярный</div>
+        <div class="pkg-name">Трансформация</div>
+        <div class="pkg-tagline">Полная перезагрузка реальности</div>
+        <div class="pkg-price"><sup>₽</sup>147 000</div>
+        <div class="pkg-period">или 3 × 52 000 · 90 дней</div>
+        <ul class="pkg-features">
+          <li>2 личные сессии с Аней и Олей</li>
+          <li>12 групповых трансформационных звонков</li>
+          <li>Полный курс "Деньги и реальность"</li>
+          <li>Система нейрокоучинга (52 практики)</li>
+          <li>Закрытый чат с прямым доступом к нам</li>
+          <li>Разбор твоего кейса в прямом эфире</li>
+          <li>Гарантия результата или возврат</li>
+        </ul>
+        <a href="#cta" class="btn-primary" style="width:100%;text-align:center;display:block;">Получить место</a>
+      </div>
+
+      <div class="pkg">
+        <div class="pkg-name">VIP Реальность</div>
+        <div class="pkg-tagline">Личное сопровождение</div>
+        <div class="pkg-price"><sup>₽</sup>390 000</div>
+        <div class="pkg-period">6 месяцев индивидуально</div>
+        <ul class="pkg-features">
+          <li>24 личные сессии (2 в месяц × 2 ч)</li>
+          <li>Прямой WhatsApp с Аней и Олей</li>
+          <li>Полный доступ ко всем материалам</li>
+          <li>Стратегия роста под твой бизнес/жизнь</li>
+          <li>Участие в закрытом клубе выпускниц</li>
+          <li>Бонус: брендинг сессия с командой</li>
+          <li>Пожизненный доступ к обновлениям</li>
+        </ul>
+        <a href="#cta" class="btn-outline" style="width:100%;text-align:center;display:block;">Обсудить</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL HERO (Sergey) -->
+<section class="testimonial-hero">
+  <div class="testimonial-hero-inner">
+    <div class="testimonial-hero-photo">
+      <img src="img/sergey.jpg" alt="Сергей">
+    </div>
+    <div>
+      <div class="th-tag">История успеха</div>
+      <p class="th-quote">«Я скептически относился к коучингу. Но результаты в бизнесе моих партнёров, которые работали с Аней и Олей, говорили сами за себя. Через 4 месяца я понял: проблема была не в рынке.»</p>
+      <div class="th-name">Сергей П.</div>
+      <div class="th-role">Предприниматель · Дубай</div>
+      <div class="th-result">
+        <div class="th-result-num">+340%</div>
+        <div class="th-result-text">рост выручки за 6 месяцев работы с командой Nova Reality</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cta">
+  <div class="cta-inner">
+    <div class="section-tag">Следующий шаг</div>
+    <h2>Твоя новая<br><em>реальность</em> — здесь</h2>
+    <p>Осталось 4 места на старт апреля. Мы работаем только с теми, кто готов. Оставь заявку — мы свяжемся в течение 24 часов для короткого знакомства.</p>
+    <div class="cta-buttons">
+      <a href="https://t.me/novareality_coach" class="btn-primary">Оставить заявку</a>
+      <a href="#packages" class="btn-outline">Посмотреть программы</a>
+    </div>
+    <div class="cta-note">Бесплатная диагностическая беседа · Без давления · Только честно</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">NOVA REALITY</div>
+  <div class="footer-text">© 2026 Nova Reality Academy · Аня & Оля · Все права защищены</div>
+</footer>
+
+</body>
+</html>
