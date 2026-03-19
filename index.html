@@ -52,16 +52,22 @@ nav {
 /* ---- HERO ---- */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0A0A0A 0%, #1a0a00 50%, #0A0A0A 100%);
   display: flex; flex-direction: column; justify-content: center; align-items: center;
   text-align: center; padding: 120px 40px 80px;
   position: relative; overflow: hidden;
 }
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80');
+  background-size: cover; background-position: center;
+  filter: brightness(0.25) saturate(0.8);
+}
 .hero::before {
   content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.12) 0%, transparent 70%);
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.18) 0%, transparent 70%);
 }
+.hero > * { position: relative; z-index: 2; }
 .hero-tag {
   font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase;
   color: var(--gold); margin-bottom: 24px;
@@ -139,16 +145,26 @@ section { padding: 100px 60px; }
   position: relative; overflow: hidden;
   aspect-ratio: 3/4; margin-bottom: 30px;
 }
+.coach-photo-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  transform: scale(1.05);
+  transition: transform 0.8s;
+  filter: brightness(0.6) saturate(1.2);
+}
+.coach-card:hover .coach-photo-bg { transform: scale(1.12); }
 .coach-photo-wrap img {
-  width: 100%; height: 100%; object-fit: cover; object-position: top;
-  filter: grayscale(20%) contrast(1.1);
+  position: relative; z-index: 1;
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
+  mix-blend-mode: luminosity;
+  filter: contrast(1.15) brightness(1.1);
   transition: transform 0.6s;
 }
 .coach-card:hover .coach-photo-wrap img { transform: scale(1.04); }
 .coach-photo-wrap::after {
   content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 50%);
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
 }
 .coach-badge {
   position: absolute; bottom: 24px; left: 24px; z-index: 2;
@@ -307,6 +323,31 @@ section { padding: 100px 60px; }
 .cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 .cta-note { font-size: 0.7rem; color: var(--gray); margin-top: 20px; letter-spacing: 1px; }
 
+/* ---- LUXURY BANNER ---- */
+.luxury-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  height: 320px; overflow: hidden;
+}
+.luxury-panel {
+  position: relative; overflow: hidden;
+  background-size: cover; background-position: center;
+  cursor: pointer;
+}
+.luxury-panel::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(201,169,110,0.15));
+  transition: opacity 0.4s;
+}
+.luxury-panel:hover::after { opacity: 0.3; }
+.luxury-panel img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
+.luxury-panel:hover img { transform: scale(1.08); }
+.luxury-label {
+  position: absolute; bottom: 20px; left: 20px; z-index: 2;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+
 /* ---- FOOTER ---- */
 footer {
   background: #050505; padding: 50px 60px;
@@ -349,6 +390,7 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
+<div class="hero-bg"></div>
   <div class="hero-tag">Академия женского мышления и денег</div>
   <h1>НОВАЯ<br><span>РЕАЛЬНОСТЬ</span></h1>
   <div class="hero-sub">Создай жизнь, которую ты заслуживаешь</div>
@@ -379,6 +421,7 @@ footer {
     <div class="coaches-grid">
       <div class="coach-card">
         <div class="coach-photo-wrap">
+          <div class="coach-photo-bg" style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80');"></div>
           <img src="img/anya.jpg" alt="Аня">
           <div class="coach-badge">
             <div class="coach-name">Аня</div>
@@ -394,6 +437,7 @@ footer {
       </div>
       <div class="coach-card">
         <div class="coach-photo-wrap">
+          <div class="coach-photo-bg" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80');"></div>
           <img src="img/olya.jpg" alt="Оля">
           <div class="coach-badge">
             <div class="coach-name">Оля</div>
@@ -569,6 +613,22 @@ footer {
     <div class="cta-note">Бесплатная диагностическая беседа · Без давления · Только честно</div>
   </div>
 </section>
+
+<!-- LUXURY STRIP -->
+<div class="luxury-strip">
+  <div class="luxury-panel">
+    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80" alt="Dubai">
+    <div class="luxury-label">Дубай · ОАЭ</div>
+  </div>
+  <div class="luxury-panel">
+    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80" alt="Ferrari">
+    <div class="luxury-label">Свобода выбора</div>
+  </div>
+  <div class="luxury-panel">
+    <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&q=80" alt="Yacht">
+    <div class="luxury-label">Твой новый уровень</div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer>
