@@ -224,6 +224,33 @@ section { padding: 100px 60px; }
 .result-name { font-size: 0.8rem; font-weight: 600; }
 .result-meta { font-size: 0.7rem; color: var(--gray); margin-top: 2px; }
 
+/* ---- CURRICULUM ---- */
+.curriculum { background: var(--dark2); }
+.curriculum-inner { max-width: 1200px; margin: 0 auto; }
+.curriculum-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 60px; }
+.module {
+  background: var(--dark3); padding: 36px;
+  border-top: 2px solid rgba(201,169,110,0.15);
+  transition: border-color 0.3s;
+}
+.module:hover { border-color: var(--gold); }
+.module-week { font-size: 0.65rem; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.module-title { font-size: 1rem; font-weight: 700; margin-bottom: 20px; line-height: 1.3; }
+.module-list { list-style: none; }
+.module-list li { font-size: 0.8rem; color: rgba(255,255,255,0.6); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.5; }
+.module-list li::before { content: '— '; color: var(--gold); }
+.curriculum-bonus {
+  margin-top: 60px; padding: 50px;
+  background: linear-gradient(135deg, rgba(201,169,110,0.06), rgba(201,169,110,0.02));
+  border: 1px solid rgba(201,169,110,0.2);
+}
+.bonus-title { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 30px; text-align: center; }
+.bonus-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.bonus-item { display: flex; gap: 16px; align-items: flex-start; }
+.bonus-item span { font-size: 1.5rem; flex-shrink: 0; }
+.bonus-item strong { display: block; font-size: 0.85rem; margin-bottom: 4px; }
+.bonus-item div { font-size: 0.75rem; color: var(--gray); line-height: 1.6; }
+
 /* ---- PACKAGES ---- */
 .packages { background: var(--dark); text-align: center; }
 .packages-inner { max-width: 1200px; margin: 0 auto; }
@@ -262,6 +289,29 @@ section { padding: 100px 60px; }
   display: flex; gap: 10px;
 }
 .pkg-features li::before { content: '✦'; color: var(--gold); flex-shrink: 0; }
+
+/* ---- RESULTS EXTRAS ---- */
+.results-summary {
+  display: flex; gap: 0; margin: 40px 0 0;
+  border: 1px solid rgba(201,169,110,0.2);
+}
+.rs-item {
+  flex: 1; padding: 30px; text-align: center;
+  border-right: 1px solid rgba(201,169,110,0.15);
+}
+.rs-item:last-child { border-right: none; }
+.rs-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem; font-weight: 700; color: var(--gold);
+}
+.rs-label { font-size: 0.7rem; color: var(--gray); margin-top: 6px; line-height: 1.4; }
+.stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 16px; }
+.result-badge {
+  display: inline-block; margin-top: 20px;
+  background: rgba(201,169,110,0.1); border: 1px solid rgba(201,169,110,0.3);
+  color: var(--gold); font-size: 0.7rem; letter-spacing: 1px;
+  padding: 6px 14px;
+}
 
 /* ---- SERGEY ---- */
 .testimonial-hero {
@@ -484,36 +534,173 @@ footer {
 <!-- RESULTS -->
 <section class="results" id="results">
   <div class="results-inner">
-    <div class="section-tag">Результаты</div>
-    <h2 class="section-title">Они уже создали<br><em>новую реальность</em></h2>
+    <div class="section-tag">Результаты выпускниц</div>
+    <h2 class="section-title">1 200 женщин уже создали<br><em>новую реальность</em></h2>
     <div class="divider"></div>
+    <div class="results-summary">
+      <div class="rs-item"><div class="rs-num">×4.7</div><div class="rs-label">Средний рост дохода за 90 дней</div></div>
+      <div class="rs-item"><div class="rs-num">94%</div><div class="rs-label">Достигают финансовой цели программы</div></div>
+      <div class="rs-item"><div class="rs-num">4.97</div><div class="rs-label">Средняя оценка программы ★★★★★</div></div>
+    </div>
     <div class="results-grid">
       <div class="result-card">
+        <div class="stars">★★★★★</div>
         <blockquote>«За 3 месяца я подняла чек на свои услуги в 4 раза. Самое удивительное — клиенты стали приходить сами. Я не изменила маркетинг. Я изменила себя.»</blockquote>
         <div class="result-author">
+          <img class="result-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&q=80" alt="">
           <div>
             <div class="result-name">Марина К.</div>
             <div class="result-meta">Дизайнер интерьеров · Москва</div>
           </div>
         </div>
+        <div class="result-badge">+320% к доходу</div>
       </div>
       <div class="result-card">
+        <div class="stars">★★★★★</div>
         <blockquote>«Я пришла с вопросом "как зарабатывать больше". Ушла с пониманием, кто я есть. Деньги — это было следствие. Сейчас мой оборот 800 000 в месяц.»</blockquote>
         <div class="result-author">
+          <img class="result-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&q=80" alt="">
           <div>
             <div class="result-name">Екатерина В.</div>
             <div class="result-meta">Онлайн-предприниматель · Дубай</div>
           </div>
         </div>
+        <div class="result-badge">800 000 ₽/мес</div>
       </div>
       <div class="result-card">
+        <div class="stars">★★★★★</div>
         <blockquote>«Я была уверена, что проблема в нише, в конкурентах, в рынке. Аня показала мне, что проблема была в том, как я разрешала себе зарабатывать. Это изменило всё.»</blockquote>
         <div class="result-author">
+          <img class="result-avatar" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=96&q=80" alt="">
           <div>
             <div class="result-name">Алина Т.</div>
             <div class="result-meta">Коуч · Алматы</div>
           </div>
         </div>
+        <div class="result-badge">×5 за 60 дней</div>
+      </div>
+      <div class="result-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>«Я запустила свой первый онлайн-продукт через 3 недели после старта программы. Продала на 1.2 миллиона за первый месяц. Без блога, без базы. Только новое мышление.»</blockquote>
+        <div class="result-author">
+          <img class="result-avatar" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=96&q=80" alt="">
+          <div>
+            <div class="result-name">Юлия М.</div>
+            <div class="result-meta">Психолог · Санкт-Петербург</div>
+          </div>
+        </div>
+        <div class="result-badge">1.2 млн первый запуск</div>
+      </div>
+      <div class="result-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>«Я наконец-то купила квартиру в Дубае. Не потому что "получилось" — а потому что я разрешила себе это иметь. Это кажется мистикой, но это просто работа с мозгом.»</blockquote>
+        <div class="result-author">
+          <img class="result-avatar" src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=96&q=80" alt="">
+          <div>
+            <div class="result-name">Диана Р.</div>
+            <div class="result-meta">Маркетолог · Дубай</div>
+          </div>
+        </div>
+        <div class="result-badge">Квартира в Дубае ✓</div>
+      </div>
+      <div class="result-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>«До программы я стеснялась называть цену выше 5 000 рублей. Сейчас мой минимальный пакет — 120 000. Клиенты не только платят — они благодарят.»</blockquote>
+        <div class="result-author">
+          <img class="result-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=96&q=80" alt="">
+          <div>
+            <div class="result-name">Анастасия Г.</div>
+            <div class="result-meta">Нутрициолог · Москва</div>
+          </div>
+        </div>
+        <div class="result-badge">Чек ×24</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum" id="curriculum">
+  <div class="curriculum-inner">
+    <div class="section-tag">Программа трансформации</div>
+    <h2 class="section-title">90 дней к <em>новой реальности</em></h2>
+    <div class="divider"></div>
+    <div class="curriculum-grid">
+
+      <div class="module">
+        <div class="module-week">Неделя 1–2</div>
+        <div class="module-title">🧠 Диагностика реальности</div>
+        <ul class="module-list">
+          <li>Карта ограничивающих убеждений</li>
+          <li>Денежный архетип: кто ты сейчас</li>
+          <li>Нейронные паттерны страха и потолка</li>
+          <li>Практика: «Письмо из будущего»</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-week">Неделя 3–4</div>
+        <div class="module-title">💎 Идентичность богатой женщины</div>
+        <ul class="module-list">
+          <li>Как мыслит женщина с доходом ×10</li>
+          <li>Телесные практики принятия изобилия</li>
+          <li>Стирание программ «я не достойна»</li>
+          <li>Практика: «Квантовый прыжок»</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-week">Неделя 5–6</div>
+        <div class="module-title">🔥 Энергия и притяжение денег</div>
+        <ul class="module-list">
+          <li>Частота изобилия: как её настроить</li>
+          <li>Стоп-слова и стоп-действия бедности</li>
+          <li>Техника «Магнит желаний»</li>
+          <li>Практика ежедневного наполнения</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-week">Неделя 7–8</div>
+        <div class="module-title">📈 Деньги и бизнес-мышление</div>
+        <ul class="module-list">
+          <li>Ценообразование из силы, не из страха</li>
+          <li>Как продавать дорого без стыда</li>
+          <li>Создание «денежной личности» бренда</li>
+          <li>Практика: повышение чека уже в эту неделю</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-week">Неделя 9–10</div>
+        <div class="module-title">🌍 Масштаб и видение</div>
+        <ul class="module-list">
+          <li>Мышление на 1 млн vs мышление на 100 млн</li>
+          <li>Окружение как зеркало реальности</li>
+          <li>Как держать уровень в любых обстоятельствах</li>
+          <li>Практика создания 5-летнего образа</li>
+        </ul>
+      </div>
+
+      <div class="module">
+        <div class="module-week">Неделя 11–12</div>
+        <div class="module-title">👑 Закрепление и новый уровень</div>
+        <ul class="module-list">
+          <li>Интеграция всех практик в жизнь</li>
+          <li>Личная стратегия на следующие 90 дней</li>
+          <li>Ритуалы женщины нового уровня</li>
+          <li>Выпускная сессия: твоя новая реальность</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="curriculum-bonus">
+      <div class="bonus-title">✦ Бонусы программы «Трансформация»</div>
+      <div class="bonus-grid">
+        <div class="bonus-item"><span>🎁</span><div><strong>Мастер-класс «Первый миллион»</strong><br>Как выйти на 7 цифр в любой нише</div></div>
+        <div class="bonus-item"><span>🎁</span><div><strong>База медитаций (47 практик)</strong><br>Аудио для ежедневной настройки</div></div>
+        <div class="bonus-item"><span>🎁</span><div><strong>Гайд «Дорогой клиент»</strong><br>Скрипты продаж с высоким чеком</div></div>
+        <div class="bonus-item"><span>🎁</span><div><strong>Закрытый клуб выпускниц</strong><br>Нетворкинг, поддержка, коллаборации</div></div>
       </div>
     </div>
   </div>
